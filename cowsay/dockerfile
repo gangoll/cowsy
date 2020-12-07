@@ -1,0 +1,8 @@
+ 
+from node:lts-alpine3.9
+RUN apk add --update npm
+COPY ./src/ /src/
+ WORKDIR /src/
+RUN chmod 777 entry-point.sh     
+ENTRYPOINT ["./entry-point.sh" , "200"]
+ 
