@@ -26,7 +26,7 @@ pipeline {
         stage('build') { // new container to test
             steps {
                 script{
-                    // sh 'docker network create testing || true'
+                    sh 'docker network create testing || true'
                    
                         // dir('cowsay'){ 
                         //     sh "docker build -t cowsay:test  ."
