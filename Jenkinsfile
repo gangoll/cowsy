@@ -43,14 +43,14 @@ pipeline {
         stage('test') {
             
             steps { 
-                 dir('app'){
+                 
                     script{             //if script returns 1 the job will fail!!
                         echo "testing..."
                         sh 'chmod +x test.sh || true'
                         RESULT=sh (script: './test.sh', returnStdout: true).trim()
                         echo "Result: ${RESULT}"
                      }
-                 }
+                 
              }
         }
         
@@ -84,8 +84,8 @@ pipeline {
     post {
         always{
             echo 'Removing testing containers:'
-            sh "docker rm -f cowsay || true" //app container
-            sh "docker rm -f cowsay || true" 
+            sh "docker rm -f cowsay:test || true" //app container
+             
         }
 
         success{     
