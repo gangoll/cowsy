@@ -28,23 +28,14 @@ pipeline {
                 script{
                     sh 'docker network create testing || true'
                    
-                        // dir('cowsay'){ 
-                        //     sh "docker build -t cowsay:test  ."
-                        //     sh "docker run -d --network testing --name=cowsay cowsay"
+                        dir('cowsay'){ 
+                            sh "docker build -t cowsay:test  ."
+                            sh "docker run -d --network testing --name=cowsay cowsay"
 
 
 
-                        // }
-                        agent { dockerfile {
-        filename 'dockerfile'
-        dir 'cowsay'
-        label 'my-defined-label'
-        additionalBuildArgs  '--build-arg version=1.0.2'
-        // args '-v /tmp:/tmp'
-    }}
-                    
-                    
-            
+                        }
+       
                     }
                 }
             }
@@ -63,7 +54,7 @@ pipeline {
              }
         }
         
-        stage('deply')
+        stage('deploy')
         {
 
         when {
