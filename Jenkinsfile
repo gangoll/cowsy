@@ -1,11 +1,6 @@
 pipeline {
-    agent { dockerfile {
-        filename 'dockerfile'
-        dir 'cowsay'
-        label 'my-defined-label'
-        additionalBuildArgs  '--build-arg version=1.0.2'
-        // args '-v /tmp:/tmp'
-    }}
+    agent { any
+    }
     tools {
   terraform 'terraform'
   
