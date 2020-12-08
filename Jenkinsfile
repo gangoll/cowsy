@@ -30,7 +30,7 @@ pipeline {
                    
                         dir('cowsay'){ 
                             sh "docker build -t cowsay:test  ."
-                            sh "docker run -d --network testing --name=cowsay:test cowsay:test"
+                            sh "docker run -d --network testing --name=cowsay_test cowsay:test"
 
 
 
@@ -84,7 +84,7 @@ pipeline {
     post {
         always{
             echo 'Removing testing containers:'
-            sh "docker rm -f cowsay:test || true" //app container
+            sh "docker rm -f cowsay_test || true" //app container
              
         }
 
