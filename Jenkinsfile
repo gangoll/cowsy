@@ -82,11 +82,11 @@ pipeline {
     }
 
     post {
-        always{
-            echo 'Removing testing containers:'
-            sh "docker rm -f cowsay_test || true" //app container
+        // always{
+        //     echo 'Removing testing containers:'
+        //     sh "docker rm -f cowsay_test || true" //app container
              
-        }
+        // }
 
         success{     
             script{           
