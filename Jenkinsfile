@@ -30,7 +30,7 @@ pipeline {
                    
                         dir('cowsay'){ 
                             sh "docker build -t cowsay:test  ."
-                            sh "docker run -d --network testing --name=cowsay_test cowsay:test"
+                            sh "docker run -d --network testing --name=cowsay_test -p 200:200 cowsay:test"
 
 
 
