@@ -68,8 +68,8 @@ pipeline {
           script{             //if script returns 1 the job will fail!!
                         echo "depploying..."
                         sh "terraform init || true"
-                       sh "terraform destroy -auto-approve || true"
-                       sh "terraform apply -auto-approve"
+                       sh "terraform destroy --auto-approve || true"
+                       sh "terraform apply --auto-approve"
                         
                     //  if ("${commit}" == "test"){
                     //     sh '''
