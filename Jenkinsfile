@@ -3,14 +3,11 @@ pipeline {
     
     tools {
   terraform 'terraform'
-  
-          
-
-    }
+   }
     stages {
         stage('pull') {
             steps {
-                sh ' git pull https://github.com/gangoll/cowsy.git || git pull git@github.com:gangoll/cowsy.git || git clone  git@github.com:gangoll/cowsy.git .'
+                sh ' git pull https://github.com/gangoll/cowsy.git  || git clone  https://github.com/gangoll/cowsy.git .'
                 script {
                     commit=sh (script: "git log -1 | tail -1", returnStdout: true).trim()
                    
@@ -26,13 +23,10 @@ pipeline {
         stage('build') { // new container to test
             steps {
                 script{
-                    sh 'docker network create testing || true'
                    
                         dir('cowsay'){ 
                             sh "docker build -t cowsay:test  ."
                             sh "docker run -d --name=cowsay_test -p 200:200 cowsay:test"
-
-
 
                         }
        
@@ -46,7 +40,7 @@ pipeline {
                  
                     script{             //if script returns 1 the job will fail!!
                         echo "testing..."
-                        sh "sleep 15"
+                        sh "sleep 10"
                         sh 'chmod +x test.sh || true'
                         RESULT=sh (script: './test.sh', returnStdout: true).trim()
                         echo "Result: ${RESULT}"
@@ -65,7 +59,7 @@ pipeline {
         steps
         {
         
-          script{             //if script returns 1 the job will fail!!
+          script{            
                         echo "depploying..."
                         sh "terraform init || true"
                        sh "terraform destroy --auto-approve || true"
