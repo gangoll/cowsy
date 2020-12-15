@@ -70,6 +70,7 @@ pipeline {
                      dir('cowsay')  {
                         echo "depploying..."
                         sh "cp /home/ubuntu/access_code ."
+                        sh "cp /home/ubuntu/key.pem ."
                         sh "./rep.sh"
                         sh "terraform init || true"
                        sh "terraform destroy --auto-approve || true"
