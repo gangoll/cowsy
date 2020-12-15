@@ -62,7 +62,7 @@ pipeline {
         // when {
         //             expression {BRANCH_NAME =~ /^(master$| release\/*)/ || commit == "test"
         //             }
-        }
+        // }
         steps
         {
         
