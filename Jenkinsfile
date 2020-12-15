@@ -73,15 +73,10 @@ pipeline {
                         sh "cp /tmp/access_code ."
                         sh "./rep.sh"
                         sh "terraform init || true"
-                       sh "terraform destroy --auto-approve || true"
+                       sh "terraform destroy --auto-approve"
                        sh "terraform apply --auto-approve"
                         
-                    //  if ("${commit}" == "test"){
-                    //     sh '''
-                    //     sed -i "s/localhost:8080/$(head -1 to-replace)/g" test.sh
-                    //      ./test.sh
-                    //      '''
-                    //     }
+                    }
                          }
         }
         }
