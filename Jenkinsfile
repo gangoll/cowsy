@@ -76,6 +76,7 @@ pipeline {
                        sh "terraform destroy --auto-approve || true"
                        sh "terraform apply --auto-approve"
 
+
                        
                         
                     
