@@ -50,7 +50,7 @@ pipeline {
                         sh 'chmod +x test.sh || true'
                          RESULT=sh './test.sh'
                         // RESULT=sh (script: './test.sh', returnStdout: true).trim()
-                        echo "Result: ${RESULT}"
+                        
                      }
                  
              }}
@@ -59,15 +59,15 @@ pipeline {
         stage('deploy')
         {
 
-        when {
-                    expression {BRANCH_NAME =~ /^(master$| release\/*)/ || commit == "test"
-                    }
+        // when {
+        //             expression {BRANCH_NAME =~ /^(master$| release\/*)/ || commit == "test"
+        //             }
         }
         steps
         {
         
           script{     
-              
+
                    dir{'cowsay'}       
                         echo "depploying..."
                         sh "cp /tmp/access_code ."
