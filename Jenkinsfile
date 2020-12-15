@@ -65,6 +65,7 @@ pipeline {
         }
         steps
         {
+            
         
           script{       
                      dir('cowsay')  {
@@ -76,9 +77,6 @@ pipeline {
                        sh "terraform destroy --auto-approve || true"
                        sh "terraform apply --auto-approve"
 
-
-                       
-                        
                     
                          }}
         }
