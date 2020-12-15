@@ -26,19 +26,19 @@ pipeline {
  
 
 
-        stage('build') { // new container to test
-            steps {
-                script{
+        // stage('build') { // new container to test
+        //     steps {
+        //         script{
                    
-                        dir('cowsay'){ 
-                            sh "docker build -t cowsay:test  ."
-                            sh "docker run -d --name=cowsay_test -p 200:200 cowsay:test"
+        //                 dir('cowsay'){ 
+        //                     sh "docker build -t cowsay:test  ."
+        //                     sh "docker run -d --name=cowsay_test -p 200:200 cowsay:test"
 
-                        }
+        //                 }
        
-                    }
-                }
-            }
+        //             }
+        //         }
+        //     }
         
         // stage('test') {
             
@@ -68,7 +68,7 @@ pipeline {
         
           script{       
                      dir('cowsay')  {
-                        echo "depploying..."
+                        echo "pwd..."
                         sh "./rep.sh"
                         sh 'terraform init'
                        sh 'terraform destroy -auto-approve'
