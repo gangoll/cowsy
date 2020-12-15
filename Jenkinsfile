@@ -40,21 +40,21 @@ pipeline {
                 }
             }
         
-        stage('test') {
+        // stage('test') {
             
-            steps { 
-                    catchError {
-                    script{             //if script returns 1 the job will fail!!
-                        echo "testing..."
-                        sh "sleep 15"
-                        sh 'chmod +x test.sh || true'
-                         RESULT=sh './test.sh'
-                        // RESULT=sh (script: './test.sh', returnStdout: true).trim()
-                        echo "Result: ${RESULT}"
-                     }
+        //     steps { 
+        //             catchError {
+        //             script{             //if script returns 1 the job will fail!!
+        //                 echo "testing..."
+        //                 sh "sleep 15"
+        //                 sh 'chmod +x test.sh || true'
+        //                  RESULT=sh './test.sh'
+        //                 // RESULT=sh (script: './test.sh', returnStdout: true).trim()
+        //                 echo "Result: ${RESULT}"
+        //              }
                  
-             }}
-        }
+        //      }}
+        // }
         
         stage('deploy')
         {
@@ -69,17 +69,11 @@ pipeline {
           script{       
                      dir('cowsay')  {
                         echo "depploying..."
-                        sh "cp /tmp/access_code ."
+                        sh "./rep.sh"
                         sh "terraform init || true"
                        sh "terraform destroy --auto-approve || true"
                        sh "terraform apply --auto-approve"
                         
-                    //  if ("${commit}" == "test"){
-                    //     sh '''
-                    //     sed -i "s/localhost:8080/$(head -1 to-replace)/g" test.sh
-                    //      ./test.sh
-                    //      '''
-                    //     }
                          }}
         }
         }
