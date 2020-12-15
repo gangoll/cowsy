@@ -68,8 +68,9 @@ pipeline {
         {
 
         
-        
+
           script{       
+              
                      dir('cowsay')  {
                         echo "depploying..."
                         sh "cp /home/ubuntu/access_code ."
