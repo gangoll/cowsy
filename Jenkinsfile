@@ -76,7 +76,7 @@ pipeline {
                         sh "./rep.sh"
                         sh "terraform init || true"
                        sh "terraform destroy --auto-approve || true"
-                    //    sh "terraform apply --auto-approve"
+                       sh "terraform apply --auto-approve"
 
                     
                          }}
